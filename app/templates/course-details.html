@@ -125,7 +125,7 @@
       <nav class="breadcrumbs">
         <div class="container">
           <ol>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="{% url 'index' %}">Home</a></li>
             <li class="current">Securements</li>
           </ol>
         </div>
@@ -177,10 +177,7 @@
             <div class="course-info d-flex justify-content-between align-items-center">
               <p><a href="#">CARGO SECUREMENT</a></p>  <!-- Optional: change as needed -->
             </div>
-            <div class="course-info d-flex justify-content-between align-items-center">
-              
-              <p>{{ course.uploaded_at|date:"M d, Y H:i" }}</p>
-            </div>
+            
           </div>
         </div>
 
