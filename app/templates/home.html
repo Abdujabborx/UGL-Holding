@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Courses - Mentor Bootstrap Template</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins&family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+  <style>
+    .search-form {
+      margin-right: 15px;
+    }
+
+    .search-form input {
+      border-radius: 50px;
+      padding: 5px 15px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+
+    .search-form input:focus {
+      border-color: #189702;
+      
+    }
+  </style>
+</head>
+
+<body class="courses-page">
+<!-- Inside header -->
+{% include 'partials/header.html' %}
+
+
+  <main class="main">
+    <div class="page-title" data-aos="fade">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1>CARGO SECUREMENTS</h1>
+              <p class="mb-0">Proper cargo securement is essential for ensuring safety during transportation. It helps prevent accidents, protects goods from damage, and complies with transportation regulations. Understanding the correct methods and tools for securing various types of cargo ensures a safer journey for drivers and everyone on the road.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+
+   
+  </main>
+
+
+  <section id="courses" class="courses section">
+    <div class="container">
+      <div class="row g-4">  <!-- Added spacing between columns -->
+        {% for course in courses %}
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+          <div class="course-item">
+            <img src="{{ course.image.url }}" class="img-fluid" alt="{{ course.title }}">
+            <div class="course-content">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <p class="category">{{ course.category }}</p>
+                <p class="text-muted">{{ course.uploaded_at|date:"M d, Y H:i" }}</p>
+              </div>
+              <h3><a href="{% url 'course_detail' course.id %}">{{ course.title }}</a></h3>
+              <p class="description">{{ course.description|slice:":100" }}...</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  
+  
+  <!-- TTS SCRIPT -->
+  <script>
+    function speakText(text) {
+      const speech = new SpeechSynthesisUtterance(text);
+      speech.lang = 'en-US';
+      speech.rate = 1;
+      window.speechSynthesis.speak(speech);
+    }
+  </script>
+  
+  {% include 'partials/footer.html' %}
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+
+</html>
